@@ -35,7 +35,7 @@ class _IrohAppState extends State<IrohApp> {
     return Scaffold(
       
       // App bar and background.
-      backgroundColor: Colors.deepOrange[400],
+      backgroundColor: Colors.orange[100],
       appBar: AppBar(
         title: Text(
           'Iroh App',
