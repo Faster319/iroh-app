@@ -4,7 +4,7 @@ import 'package:my_app/presentation/my_flutter_app_icons.dart';
  
 void main() => runApp(MaterialApp(
   home: IrohApp(),
-));
+)); // MaterialApp
  
 class IrohApp extends StatefulWidget {
   @override
@@ -40,20 +40,21 @@ class _IrohAppState extends State<IrohApp> {
           'Iroh App',
           style: TextStyle(
             fontFamily: 'Avatar',
-          ),
-        ),
+          ), // TextStyle
+        ), // Text
         centerTitle: true,
         backgroundColor: Colors.red[900],
-      ),
+      ), // AppBar
  
       // Main body
       body: Container(
+        // Background
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/appa.png"), 
             fit: BoxFit.cover,
-          ),
-        ),
+          ), // DecorationImage
+        ), // BoxDecoration
  
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -63,20 +64,24 @@ class _IrohAppState extends State<IrohApp> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Container(
+                  // Button Design
                   decoration: BoxDecoration(
                     color: Colors.red[700],
+                    // Drop Shadow
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.5),
                         spreadRadius: 5,
                         blurRadius: 7,
                         offset: Offset(0, 3), //changes position of shadow.
-                      ),
+                      ), // BoxShadow
                     ],
-                  ),
+                  ), // BoxDecoration
                   child: RaisedButton.icon(
                     onPressed: () {
                       setState(() {
+                        // Shuffles through listed quotes.
+                        // The top quote from the list is then added to the string 'newString'.
                         quotes.shuffle();
                         newQuote = quotes[0];
                       });
@@ -89,12 +94,12 @@ class _IrohAppState extends State<IrohApp> {
                         fontFamily: 'Avatar',
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+                      ), // TextStyle
+                    ), // Text
+                  ), // RaisedButton.icon
+                ), // Container
+              ], // <Widget>[]
+            ), // Row
  
             // Quote box
             Row(
@@ -102,20 +107,23 @@ class _IrohAppState extends State<IrohApp> {
               children: <Widget>[
                 Expanded(
                   child: Container(
+                    // Box design
                     padding: EdgeInsets.all(50.0),
                     decoration: BoxDecoration(
                       color: Colors.red[700],
+                      // Drop shadow
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.5),
                           spreadRadius: 5,
                           blurRadius: 7,
                           offset: Offset(0, 3), //changes position of shadow.
-                        ),
+                        ), // BoxShadow
                       ],  
-                    ),
+                    ), // BoxDecoration
  
                   child: Text(
+                    // Prints new quote after button is pressed.
                     '$newQuote',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -123,16 +131,16 @@ class _IrohAppState extends State<IrohApp> {
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.bold,
                       fontSize: 17.5,
-                    ),
-                  ),
-                  ),
-                ),
-              ]
-            ),
-          ],
-        ),
-      ),
-    );
+                    ), // TextStyle
+                  ), // Text
+                  ), // Container
+                ), // Expanded
+              ] // <Widget>[]
+            ), // Row
+          ], // <Widger>[]
+        ), // Column
+      ), // Container
+    ); // Scaffold
   return scaffold;
   }
 }
