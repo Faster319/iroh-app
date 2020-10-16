@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:characters/characters.dart';
 import 'package:my_app/presentation/my_flutter_app_icons.dart';
-
+ 
 void main() => runApp(MaterialApp(
   home: IrohApp(),
 ));
-
+ 
 class IrohApp extends StatefulWidget {
   @override
   _IrohAppState createState() => _IrohAppState();
 }
-
+ 
 class _IrohAppState extends State<IrohApp> {
-
+ 
   // List of quotes by Iroh.
   List<String> quotes = [
     '“It is important to draw wisdom from many different places. If we take it from only one place, it becomes rigid and stale.”',
@@ -26,16 +26,15 @@ class _IrohAppState extends State<IrohApp> {
     '“You must never give in to despair. Allow yourself to slip down that road and you surrender to your lowest instincts. In the darkest times, hope is something you give yourself. That is the meaning of inner strength.”',
     '“It is time for you to look inward, and start asking yourself the big questions. Who are you? And what do you want?”',
   ]; 
-
+ 
   // Blank string in place for new quote.
   String newQuote = '';
-
+ 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-      // App bar and background.
-      backgroundColor: Colors.orange[100],
+    var scaffold = Scaffold(
+ 
+      // App bar
       appBar: AppBar(
         title: Text(
           'Iroh App',
@@ -46,60 +45,76 @@ class _IrohAppState extends State<IrohApp> {
         centerTitle: true,
         backgroundColor: Colors.red[900],
       ),
-
+ 
       // Main body
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          
-          // Quote Iroh button
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.red[700],
-                  border: Border.all(
-                    width: 3,
-                    color: Colors.black,
-                  )
-                ),
-                child: RaisedButton.icon(
-                  onPressed: () {
-                    setState(() {
-                      quotes.shuffle();
-                      newQuote = quotes[0];
-                    });
-                  },
-                  color: Colors.red[700],
-                  icon: Icon(Icons.menu),
-                  label: Text(
-                    'Quote Iroh',
-                    style: TextStyle(
-                      fontFamily: 'Avatar',
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/appa.png"), 
+            fit: BoxFit.cover,
           ),
-
-          // Quote box
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(50.0),
+        ),
+ 
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+          // Quote Iroh button
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Container(
                   decoration: BoxDecoration(
                     color: Colors.red[700],
-                    border: Border.all(
-                      width: 3,
-                      color: Colors.black,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), //changes position of shadow.
+                      ),
+                    ],
+                  ),
+                  child: RaisedButton.icon(
+                    onPressed: () {
+                      setState(() {
+                        quotes.shuffle();
+                        newQuote = quotes[0];
+                      });
+                    },
+                    color: Colors.red[700],
+                    icon: Icon(Icons.menu),
+                    label: Text(
+                      'Quote Iroh',
+                      style: TextStyle(
+                        fontFamily: 'Avatar',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
-
+                ),
+              ],
+            ),
+ 
+            // Quote box
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(50.0),
+                    decoration: BoxDecoration(
+                      color: Colors.red[700],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), //changes position of shadow.
+                        ),
+                      ],  
+                    ),
+ 
                   child: Text(
                     '$newQuote',
                     textAlign: TextAlign.center,
@@ -107,14 +122,17 @@ class _IrohAppState extends State<IrohApp> {
                       fontFamily: 'Avatar',
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.bold,
+                      fontSize: 17.5,
                     ),
                   ),
+                  ),
                 ),
-              ),
-            ]
-          ),
-        ],
+              ]
+            ),
+          ],
+        ),
       ),
     );
+  return scaffold;
   }
 }
